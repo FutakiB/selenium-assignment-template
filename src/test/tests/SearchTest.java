@@ -48,7 +48,6 @@ class SearchTest extends BaseTest {
         HomePage home = new HomePage(driver).open();
         String randomEmail = "soat-" + UUID.randomUUID().toString().substring(0, 8) + "@example.com";
         home.submitNewsletter(randomEmail);
-        // We don't have a guaranteed success message, so just verify the page is still alive.
         assertFalse(driver.getTitle().isBlank());
     }
 
@@ -59,7 +58,6 @@ class SearchTest extends BaseTest {
         Set<Cookie> cookies = driver.manage().getCookies();
         assertFalse(cookies.isEmpty(), "Expected at least one cookie after loading the page");
 
-        // Delete any consent-related cookies, then reload.
         for (Cookie c : cookies) {
             if (c.getName().toLowerCase().contains("consent")
                     || c.getName().toLowerCase().contains("cookie")) {

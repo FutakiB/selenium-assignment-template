@@ -13,12 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-/**
- * Tests that require a registered, logged-in user account.
- */
 class AccountTest extends BaseTest {
 
-    /** Helper: log in with the credentials from config.properties and return the LoginPage. */
     private LoginPage loginWithValidCredentials() {
         LoginPage login = new HomePage(driver).open().goToLogin();
         login.enterEmail(ConfigReader.get("login.username"))
@@ -32,12 +28,9 @@ class AccountTest extends BaseTest {
     void shouldAddProductToCartAsLoggedInUser() {
         loginWithValidCredentials();
 
-        // Search for a product, open the first result, then submit the Add-to-Cart form.
-        // This form requires the user to be registered (cart items are tied to the account).
         SearchResultsPage results = new HomePage(driver).open().searchFor("lego");
         results.clickFirstProduct().addToCart();
 
-        // Verify the page is still responsive after the form submission.
         assertFalse(driver.getTitle().isBlank(),
                 "Page should still have a title after adding a product to the cart");
     }

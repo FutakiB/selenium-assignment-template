@@ -20,7 +20,6 @@ public class ScreenshotListener implements TestWatcher, AfterTestExecutionCallba
             ExtensionContext.Namespace.create("soat.screenshot");
     public static final String DRIVER_KEY = "driver";
 
-    // AfterTestExecutionCallback fires before @AfterEach, so the driver is still alive here.
     @Override
     public void afterTestExecution(ExtensionContext context) {
         Optional<Throwable> exception = context.getExecutionException();

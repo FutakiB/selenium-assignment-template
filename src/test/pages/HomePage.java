@@ -76,8 +76,6 @@ public class HomePage extends BasePage {
         }
     }
 
-    // -------------------------------------------------------------------------
-
     private void scrollToNewsletter() {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight * 0.65);");
     }

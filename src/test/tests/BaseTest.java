@@ -15,7 +15,6 @@ public abstract class BaseTest {
 
     protected WebDriver driver;
 
-    // Holds the latest ExtensionContext so we can stash the driver for the listener.
     @RegisterExtension
     final ContextCapture capture = new ContextCapture();
 

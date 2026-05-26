@@ -16,12 +16,10 @@ class LoginTest extends BaseTest {
     @DisplayName("Should show error message when logging in with invalid credentials")
     void shouldShowErrorOnInvalidLogin() {
         LoginPage login = new HomePage(driver).open().goToLogin();
-        // Use deliberately invalid credentials so the login always fails.
         login.enterEmail("notregistered@test.example")
              .enterPassword("WrongPassword123")
              .submit();
 
-        // Either an error appears, or the password field is still on screen (login did not succeed).
         String err = login.getErrorMessage();
         boolean stillOnLogin = login.isPasswordFieldDisplayed();
         assertTrue(!err.isBlank() || stillOnLogin,
@@ -35,7 +33,6 @@ class LoginTest extends BaseTest {
         login.enterEmail("a@b.cd")
              .enterPassword("xyz")
              .submit();
-        // Verify URL changed or form re-rendered — either way, submission happened.
         assertFalse(driver.getCurrentUrl().isBlank());
     }
 
